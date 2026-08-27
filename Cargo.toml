@@ -1,3 +1,5 @@
 [workspace]
-members = []
+members = [
+    "ch01_startup"
+]
 resolver = "2"
