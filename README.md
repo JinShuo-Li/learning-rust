@@ -4,6 +4,24 @@
 
 > All the code are compiled in WSL2, Ubuntu 24.04
 
+## Repo Doctor
+
+[`doctor.py`](doctor.py) is a small Python helper that keeps this repo healthy. It checks for:
+
+1. **Stray compiled artifacts** -- e.g. executables produced by running `rustc main.rs` directly inside `src/`, which `git` does not ignore. It lists them all and asks once whether to delete them.
+2. **Workspace mismatches** -- warns if a directory has a `Cargo.toml` but is missing from the root workspace `members` (or vice versa). Warning only.
+3. **Nested git repositories** -- e.g. a `.git` left inside a chapter folder by `cargo new` without `--vcs none`, which would hide the code from the outer repo. Lists them all and asks once whether to delete them.
+
+Usage (Python 3.11+, no third-party dependencies):
+
+```
+python3 doctor.py                # run all three checks in order
+python3 doctor.py --binary       # only check for stray compiled artifacts
+python3 doctor.py --workspace    # only check workspace member mismatches
+python3 doctor.py --git          # only check for nested .git directories
+python3 doctor.py --check-only   # list findings only, never prompt or delete
+```
+
 ## Chapter 0: Install `Rust`
 
 Run the following command:
