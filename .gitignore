@@ -1,0 +1,20 @@
+# Cargo build artifacts
+/target/
+
+# Dependency lock file (ignore for library projects, keep for application projects)
+# If this is a pure learning/application project, keep Cargo.lock tracked
+# /Cargo.lock
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Rust Analyzer cache
+.rust-analyzer/
