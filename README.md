@@ -121,3 +121,90 @@ rustc main.rs
 Then run `./main` to see the output(s).
 
 But we still recommend you to use `cargo`.
+
+## Chapter 2: Programming a Guessing Game
+
+Let's take a look at the source code of `ch02_gaming/src/main.rs`:
+
+```rust
+use std::io;
+
+fn main() {
+    println!("Guess the number!");
+    println!("Please input your guess.");
+
+    let mut guess = String::new();
+
+    io::stdin()
+        .read_line(&mut guess)
+        .expect("Failed to read line");
+
+    println!("You guessed: {guess}");
+}
+```
+
+This program is a simple guessing game. Let's review it in detail:
+
+```rust
+use std::io;
+```
+
+Here, the program use the `std::io` library, which is a standard library that provides you with a number of useful features, including the ability to accept user input.
+
+```rust
+let mut guess = String::new();
+```
+
+This line creates a mutable variable named `guess` and initializes it with a new, empty `String`.
+
+The `mut` keyword indicates that the value of `guess` can be changed later in the program. The `String::new()` function creates a new instance of a string.
+
+```rust
+io::stdin()
+    .read_line(&mut guess)
+    .expect("Failed to read line");
+```
+
+Here we use the function `io::stdin()` from the `std::io` library to get a handle to the standard input of the terminal. Then we call the method `read_line()` on that handle, passing a mutable reference to our `guess` variable. This method will read a line of input from the user and store it in the `guess` variable.
+
+The `&` symbol indicates that we are passing a reference to the `guess` variable, rather than the variable itself. This is necessary because `read_line()` needs to modify the value of `guess`.
+
+**References are a complex feature, and one of Rust's major advantages is how safe and easy it is to use references.**
+
+and:
+
+```rust
+    .expect("Failed to read line");
+```
+
+Here the program handles potential failure with the result type. The `read_line()` method returns a `Result` type, which can be either `Ok` or `Err`. If the result is `Err`, the program will panic and print the message "Failed to read line". If the result is `Ok`, the program will continue executing.
+
+If we don't use `expect()`, and compile the program, we will get a warning:
+
+```shell
+   Compiling ch02_gaming v0.1.0 (/home/lijs/tmp/rustlearning/ch02_gaming)
+warning: unused `Result` that must be used
+  --> ch02_gaming/src/main.rs:9:5
+   |
+ 9 | /     io::stdin()
+10 | |         .read_line(&mut guess);
+   | |______________________________^
+   |
+   = note: this `Result` may be an `Err` variant, which should be handled
+   = note: `#[warn(unused_must_use)]` (part of `#[warn(unused)]`) on by default
+help: use `let _ = ...` to ignore the resulting value
+   |
+ 9 |     let _ = io::stdin()
+   |     +++++++
+
+warning: `ch02_gaming` (bin "ch02_gaming") generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.20s
+```
+
+In Rust, fun fact: Compilable warnings are not errors, and they do not prevent the program from running. As Rust designed to be strict and safe, it will warn you about potential problems in your code, even if they do not prevent the program from running. This is a good thing, as it helps you catch potential bugs early in the development process.
+
+```rust
+println!("You guessed: {guess}");
+```
+
+Here the program prints the value of the `guess` variable to the screen. The `{guess}` syntax is a placeholder that will be replaced with the value of the `guess` variable when the program runs.
