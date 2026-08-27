@@ -102,5 +102,5 @@ rustc main.rs
 
 Then run `./main` to see the output(s).
 
-But we still recommand you to use `cargo`.
+But we still recommend you to use `cargo`.
 
