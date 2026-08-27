@@ -63,10 +63,6 @@ MAGIC_SIGNATURES = (
 )
 
 
-# --------------------------------------------------------------------------
-# Small shared helpers
-# --------------------------------------------------------------------------
-
 def ask_yes_no(prompt: str) -> bool:
     """Ask a yes/no question on stdin. Default (empty/unknown/EOF) is No."""
     try:
