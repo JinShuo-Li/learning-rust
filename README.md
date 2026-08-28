@@ -403,3 +403,99 @@ let guess: u32 = match guess.trim().parse() {
 ```
 
 The `match` expression checks if the `parse()` method returns an `Ok` or an `Err`. If it returns `Ok`, we assign the parsed number to the `guess` variable. If it returns `Err`, we use the `continue` statement to skip the rest of the loop and prompt the user for another guess.
+
+## Chapter 3: Common Programming Concepts
+
+This chapter covers concepts that appear in every programming language and how they work in Rust.
+
+### Variables and Mutability
+
+As mentioned in previous chapter, **variables are immutable** by default. When a variable is immutable, once a value is bound to a name, you can't change that value. For example, if you write the following lines to a `.rs` file and compile it using `rustc`, you will see:
+
+```rust
+fn main() {
+    let x = 5;
+    println!("The value of x is {x}");
+
+    // mut the value of x
+    x = 6;
+    println!("The value of x is {x}")
+}
+```
+The line start with `let` means that the programme creates a new variable `x`. The line start with `x =` tries to assign the value `6` to the variable `x`.
+
+If you compile the codes above, you will see:
+
+```shell
+error[E0384]: cannot assign twice to immutable variable `x`
+ --> test.rs:5:5
+  |
+2 |     let x = 5;
+  |         - first assignment to `x`
+...
+5 |     x = 6;
+  |     ^^^^^ cannot assign twice to immutable variable
+  |
+help: consider making this binding mutable
+  |
+2 |     let mut x = 5;
+  |         +++
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0384`.
+```
+
+Just like what is instructed in the compiler's error, we can make a variable mutable by adding `mut` in front of the variable name as we did in Chapter 2.
+
+```rust
+fn main() {
+    let mut x = 5;
+    println!("The value of x is {x}");
+
+    // mut the value of x
+    x = 6;
+    println!("The value of x is {x}")
+}
+```
+
+#### Declaring Constants
+
+Constants are **immutable**, and can be declared in any scope, including the global scope, which makes them useful for global parameters. For exampe:
+
+```rust
+const THRESHOLD: i32 = 1024;
+```
+
+Constants are valid for the entire time a program runs, within the scope in which they were declared.
+
+#### Shadowing
+
+Let's firstly see an example:
+
+```rust
+fn main() {
+    let x = 5;
+
+    let x = x + 1;
+
+    {
+        let x = x * 2;
+        println!("The value of x in the inner scope is: {x}");
+    }
+
+    println!("The value of x is {x}");
+}
+```
+
+run `cargo run` and we will see:
+
+```shell
+   Compiling ch03_basics v0.1.0 (/home/lijs/tmp/rustlearning/ch03_basics)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.43s
+     Running `/home/lijs/tmp/rustlearning/target/debug/ch03_basics`
+The value of x in the inner scope is: 12
+The value of x is 6
+```
+
+Shadowing is different from marking a variable as `mut` because we creates a new variable with the same name. Also even with `mut` we can't mutate a variable's type. But shadowing can.
