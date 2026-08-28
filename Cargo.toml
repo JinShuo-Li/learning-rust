@@ -1,5 +1,5 @@
 [workspace]
 members = [
     "ch01_startup"
-, "ch02_gaming"]
+, "ch02_gaming", "ch03_basics"]
 resolver = "2"
