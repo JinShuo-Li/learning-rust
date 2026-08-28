@@ -41,11 +41,13 @@ fn main() {
     let mut input = String::new();
 
     // Step 1: compile me first and read the warning.
-    io::stdin().read_line(&mut input);
+    let bytes = io::stdin().read_line(&mut input).expect("Failed to read line");
 
     // TODO Step 2: bind the Result, expect on Err, print bytes read
     // and echo the input back, e.g. `You typed 4 bytes: "hi"`.
+    println!("You typed {} bytes: {:?}", bytes, input.trim());
 
     // TODO Step 3: a println! that proves whether code after a
     // panic runs -- plus your answer in comments.
+    println!("This line proves whether code after panic runs.");
 }
