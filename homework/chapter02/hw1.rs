@@ -31,10 +31,16 @@ fn main() {
     println!("What is your name?");
 
     // TODO 1: `use` the io module (place it at the top of the file)
+    use std::io;
 
     // TODO 2: let mut name = ...;
+    let mut name = String::new();
 
     // TODO 3: io::stdin().read_line(...).expect(...);
+    io::stdin()
+        .read_line(&mut name)
+        .expect("Failed to read line");
 
     // TODO 4: println!(...);
+    println!("Hello, {name}")
 }
