@@ -36,8 +36,20 @@
 // the message what it is? Answer in a comment.
 // ============================================================
 
+use std::io;
+
 fn main() {
     println!("Enter a number:");
-
+    let mut num = String::new();
     // TODO: read, trim, parse (with type annotation), print.
+
+    io::stdin()
+        .read_line(&mut num)
+        .expect("Failed to read line");
+
+    let num: i32 = num.trim().parse().expect("Failed to convert the input");
+
+    println!("Doubled: {}", num*2);
+    println!("Half: {}", num/2);
+    println!("As f64: {:.1}", num as f64);
 }
