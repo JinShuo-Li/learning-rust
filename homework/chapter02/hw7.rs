@@ -38,5 +38,22 @@ use std::io;
 const THRESHOLD: i32 = 20;
 
 fn main() {
+    println!("Enter temperature: ");
+
     // TODO: read temp, then match temp.cmp(&THRESHOLD) { ... }
+    let mut temper = String::new();
+
+    io::stdin()
+        .read_line(&mut temper)
+        .expect("Failed to read line");
+    
+    let temper: i32 = temper
+        .trim().parse()
+        .expect("Failed to convert the data class");
+    
+    match temper.cmp(&THRESHOLD) {
+        Ordering::Less => println!("Comparing {temper} with threshold {THRESHOLD}: Below threshold"),
+        Ordering::Equal => println!("Exactly at threshold"),
+        Ordering::Greater => println!("Comparing {temper} with threshold {THRESHOLD}: Above threshold"),
+    }
 }
