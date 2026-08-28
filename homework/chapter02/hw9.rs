@@ -41,4 +41,24 @@ use std::io;
 
 fn main() {
     // TODO: loop { read, match on parse() Result }
+    loop {
+        println!("Enter a number:");
+
+        let mut num = String::new();
+
+        io::stdin()
+            .read_line(&mut num)
+            .expect("Failed to read line");
+        
+        let num: i32 = match num.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("Not a number, try again.");
+                continue;
+            }
+        };
+
+        println!("Got: {num}");
+        break;
+    }
 }
