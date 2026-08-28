@@ -34,6 +34,8 @@
 
 fn main() {
     let mut counter = 0;
+    // Answer: the compiler complained: "cannot assign twice to immutable variable `counter"
+
     counter = counter + 1;
     println!("counter = {counter}");
 
@@ -43,6 +45,12 @@ fn main() {
 
     // TODO Part B: multiply value by 10, print it, answer the
     // questions in comments.
+    
+    // Answer: cannot multiply `&str` by `{integer}`
+    // Answer: the value that is assigned by `value.len()` alive here
 
     // TODO Part C: your explanation comment goes here.
+    // Answer: Because the two values before and after don’t point to the same memory.
+    // Even though they have the same name, they actually don’t belong to the same variable due to the difference in data types.
+    // The latter just shadows the former, rather than changing its value.
 }
