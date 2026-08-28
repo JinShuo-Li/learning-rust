@@ -328,3 +328,78 @@ match guess.cmp(&secret_number) {
 ```
 
 The `cmp()` method compares the user's guess with the secret number and returns an `Ordering` value. We use a `match` expression to handle each possible outcome: if the guess is less than the secret number, we print "Too small!"; if it is greater, we print "Too big!"; and if it is equal, we print "You win!".
+
+### Allowing Multiple Guesses with Looping
+
+Now we can allow the user to make multiple guesses until they guess the correct number. The source code is as follows:
+
+```rust
+use std::cmp::Ordering;
+use std::io;
+
+use rand::Rng;
+
+fn main() {
+    println!("Guess the number!");
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    loop {
+        println!("Please input your guess.");
+
+        let mut guess = String::new();
+
+        io::stdin()
+            .read_line(&mut guess)
+            .expect("Failed to read line");
+
+        let guess: u32 = match guess.trim().parse() {
+            Ok(_num) => _num,
+            Err(_num) => continue,
+        };
+
+        println!("You guessed: {guess}");
+
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal => {
+                println!("You win!");
+                break;
+            }
+        }
+    }
+}
+```
+
+Here the program uses a `loop` to allow the user to make multiple guesses:
+
+```rust
+loop {
+    // code
+}
+```
+
+Until they guess the correct number. The `loop` will continue until `quit` is called, or `Ctrl+C` is pressed.
+
+We also modify the code so that the game will quit when the user wins by adding a `break` statement inside the `Ordering::Equal` arm of the `match` expression:
+
+```rust
+Ordering::Equal => {
+    println!("You win!");
+    break;
+}
+```
+
+Now the game will continue to prompt the user for guesses until they guess the correct number, at which point it will print "You win!" and exit the loop.
+
+We also modify the code to handle invalid input by using a `match` expression to check if the user's input can be parsed as a number:
+
+```rust
+let guess: u32 = match guess.trim().parse() {
+    Ok(_num) => _num,
+    Err(_num) => continue,
+};
+```
+
+The `match` expression checks if the `parse()` method returns an `Ok` or an `Err`. If it returns `Ok`, we assign the parsed number to the `guess` variable. If it returns `Err`, we use the `continue` statement to skip the rest of the loop and prompt the user for another guess.
