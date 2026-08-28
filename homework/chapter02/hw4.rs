@@ -33,5 +33,16 @@
 // ============================================================
 
 fn main() {
-    // TODO: roll 10 times, print each roll, then print the total.
+    let mut total = 0;
+
+    for i in 1..=10 {
+        // TODO: replace with rand::thread_rng().gen_range(1..=6)
+        //       once cargo project is set up in Problem 5.
+        let roll = (i * 7 + 3) % 6 + 1; // deterministic placeholder in [1, 6]
+
+        println!("Roll {}: {}", i, roll);
+        total += roll;
+    }
+
+    println!("Total: {}", total);
 }
