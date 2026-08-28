@@ -30,10 +30,10 @@
 //     On to Chapter 2!
 // ============================================================
 
-fn Main() {
-    println("I am learning Rust.");
+fn main() {
+    println!("I am learning Rust.");
 
-    println!("Chapter 1 is done!")
+    println!("Chapter 1 is done!");
 
     println!("On to Chapter 2!");
 }

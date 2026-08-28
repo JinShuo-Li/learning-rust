@@ -27,5 +27,7 @@
 // ============================================================
 
 fn main() {
-    // TODO: your three println! calls go here
+    println!("Rust is compiled.");
+    println!("Rust is fast.");
+    println!("Rust is safe.");
 }
