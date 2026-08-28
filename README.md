@@ -264,3 +264,67 @@ let secret_number = rand::thread_rng().gen_range(1..=100);
 
 Here we call the `gen_range()` method on the random number generator returned by `rand::thread_rng()`. The `gen_range()` method takes a range as an argument and returns a random number within that range. In this case, we are generating a random number between 1 and 100 (inclusive). If we want to generate a random number between 1 and 100 (exclusive), we can use the range `1..100` instead.
 
+### Comparing the Guess with the Secret Number
+
+Now we can compare the user's guess with the secret number. The source code is as follows:
+
+```rust
+use std::cmp::Ordering;
+use std::io;
+
+use rand::Rng;
+
+fn main() {
+    println!("Guess the number!");
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    println!("The secret number is: {secret_number}");
+
+    println!("Please input your guess.");
+
+    let mut guess = String::new();
+
+    io::stdin()
+        .read_line(&mut guess)
+        .expect("Failed to read line");
+
+    let guess: u32 = guess.trim().parse().expect("Please type a number!");
+
+    println!("You guessed: {guess}");
+
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small!"),
+        Ordering::Greater => println!("Too big!"),
+        Ordering::Equal => println!("You win!"),
+    }
+}
+```
+
+First, we add the line:
+
+```rust
+use std::cmp::Ordering;
+```
+
+Bringing a type called `std::cmp::Ordering` into scope. The `Ordering` type is an enum that has three variants: `Less`, `Greater`, and `Equal`. We will use this type to compare the user's guess with the secret number.
+
+Then we add the following line:
+
+```rust
+let guess: u32 = guess.trim().parse().expect("Please type a number!");
+```
+
+This line converts the `String` to a `u32` by trimming whitespace and parsing the string as a number. If the conversion fails, it will panic with the message "Please type a number!". The `trim()` method removes any whitespace from the beginning and end of the string, and the `parse()` method attempts to convert the string to a number. The `expect()` method is used to handle any potential errors that may occur during the conversion process.
+
+Finally, we add the following code to compare the user's guess with the secret number:
+
+```rust
+match guess.cmp(&secret_number) {
+    Ordering::Less => println!("Too small!"),
+    Ordering::Greater => println!("Too big!"),
+    Ordering::Equal => println!("You win!"),
+}
+```
+
+The `cmp()` method compares the user's guess with the secret number and returns an `Ordering` value. We use a `match` expression to handle each possible outcome: if the guess is less than the secret number, we print "Too small!"; if it is greater, we print "Too big!"; and if it is equal, we print "You win!".
