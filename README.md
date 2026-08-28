@@ -174,7 +174,7 @@ The `&` symbol indicates that we are passing a reference to the `guess` variable
 and:
 
 ```rust
-    .expect("Failed to read line");
+.expect("Failed to read line");
 ```
 
 Here the program handles potential failure with the result type. The `read_line()` method returns a `Result` type, which can be either `Ok` or `Err`. If the result is `Err`, the program will panic and print the message "Failed to read line". If the result is `Ok`, the program will continue executing.
@@ -208,3 +208,59 @@ println!("You guessed: {guess}");
 ```
 
 Here the program prints the value of the `guess` variable to the screen. The `{guess}` syntax is a placeholder that will be replaced with the value of the `guess` variable when the program runs.
+
+### Generating a Random Number
+
+Now we can implement a new version of the guessing game, which generates a random number and compares it with the user's guess. The source code is as follows:
+
+```rust
+use std::io;
+
+use rand::Rng;
+
+fn main() {
+    println!("Guess the number!");
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    println!("The secret number is: {secret_number}");
+
+    println!("Please input your guess.");
+
+    let mut guess = String::new();
+
+    io::stdin()
+        .read_line(&mut guess)
+        .expect("Failed to read line");
+
+    println!("You guessed: {guess}");
+}
+```
+
+To use the `rand` crate, we need to add it to the `Cargo.toml` file:
+
+```toml
+[dependencies]
+rand = "0.8.5"
+```
+
+If we want to update the `rand` crate to the latest version, we can run the following command:
+
+```shell
+cargo update
+```
+
+Now we can compile and run the program, and it will generate a random number between 1 and 100, and compare it with the user's guess.
+
+```rust
+use rand::Rng;
+```
+
+First we add the line `use rand::Rng;` to the top of the file. This line tells Rust that we want to use the `Rng` trait from the `rand` crate. The `Rng` trait defines methods that random number generators implement, and we need it to generate random numbers.
+
+```rust
+let secret_number = rand::thread_rng().gen_range(1..=100);
+```
+
+Here we call the `gen_range()` method on the random number generator returned by `rand::thread_rng()`. The `gen_range()` method takes a range as an argument and returns a random number within that range. In this case, we are generating a random number between 1 and 100 (inclusive). If we want to generate a random number between 1 and 100 (exclusive), we can use the range `1..100` instead.
+
