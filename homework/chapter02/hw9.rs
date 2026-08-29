@@ -49,7 +49,7 @@ fn main() {
         io::stdin()
             .read_line(&mut num)
             .expect("Failed to read line");
-        
+
         let num: i32 = match num.trim().parse() {
             Ok(num) => num,
             Err(_) => {

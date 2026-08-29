@@ -27,5 +27,5 @@ fn main() {
     var();
 
     shadowing();
-    
+
 }

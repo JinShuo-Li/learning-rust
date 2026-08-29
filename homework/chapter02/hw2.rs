@@ -45,7 +45,7 @@ fn main() {
 
     // TODO Part B: multiply value by 10, print it, answer the
     // questions in comments.
-    
+
     // Answer: cannot multiply `&str` by `{integer}`
     // Answer: the value that is assigned by `value.len()` alive here
 

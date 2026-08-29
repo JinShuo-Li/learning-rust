@@ -39,12 +39,12 @@ fn main() {
     // TODO: loop { read, trim, match on "quit" / empty / else }
     loop {
         println!("> ");
-        
+
         let mut prompt = String::new();
         io::stdin()
             .read_line(&mut prompt)
             .expect("Failed to read line");
-        
+
         if prompt.trim() == "quit" {
             println!("Bye!");
             break;

@@ -46,11 +46,11 @@ fn main() {
     io::stdin()
         .read_line(&mut temper)
         .expect("Failed to read line");
-    
+
     let temper: i32 = temper
         .trim().parse()
         .expect("Failed to convert the data class");
-    
+
     match temper.cmp(&THRESHOLD) {
         Ordering::Less => println!("Comparing {temper} with threshold {THRESHOLD}: Below threshold"),
         Ordering::Equal => println!("Exactly at threshold"),
