@@ -27,11 +27,11 @@
 // will fix it (that method shows up in Problem 6).
 // ============================================================
 
+// TODO 1: `use` the io module (place it at the top of the file)
+use std::io;
+
 fn main() {
     println!("What is your name?");
-
-    // TODO 1: `use` the io module (place it at the top of the file)
-    use std::io;
 
     // TODO 2: let mut name = ...;
     let mut name = String::new();
