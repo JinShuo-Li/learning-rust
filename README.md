@@ -50,7 +50,7 @@ rustup self uninstall
 
 ### Initialization: Cargo
 
-Now we can initialize the first rust project:
+Now we can initialize the first Rust project:
 
 ```
 cargo new ch01_startup
@@ -62,7 +62,7 @@ If you don't want to initialize it with `git`, you can run:
 cargo new ch01_startup --vcs none
 ```
 
-Then you can see a new directory appear in your working place. This is the new rust project you just made.
+Then you can see a new directory appear in your working directory. This is the new Rust project you just made.
 
 In the future, to compile, run the following command:
 
@@ -78,13 +78,13 @@ cd ch01_startup
 cargo run
 ```
 
-`Cargo` also provides a command called `cargo check` that can *quickly* checks your code to make sure it compiles but doesn't produce an executable.
+`Cargo` also provides a command called `cargo check` that *quickly* checks your code to make sure it compiles but doesn't produce an executable.
 
-There are also other useful `cargo` command, we *may* introduce them in later chapters.
+There are also other useful `cargo` commands; we *may* introduce them in later chapters.
 
 ### Hello, World!
 
-In the rust project we just made, we can see a rust source file named `main.rs` in `src/`, which contains:
+In the Rust project we just made, we can see a Rust source file named `main.rs` in `src/`, which contains:
 
 ```rust
 fn main() {
@@ -100,7 +100,7 @@ fn main() {
 }
 ```
 
-These lines define a function named main. The main function is special, it is always the first code that runs in every executable Rust program. If there were parameters, they would go inside the `()`. And the function body is wrapped in curly brackets `{}`.
+These lines define a function named main. The main function is special: it is always the first code that runs in every executable Rust program. If there were parameters, they would go inside the `()`; and the function body is wrapped in curly brackets `{}`.
 
 ```rust
 println!("Hello, World!");
@@ -108,19 +108,19 @@ println!("Hello, World!");
 
 This line prints text to the screen. Here are three more things we need to know:
 
-1. `println!` calls a **Macro**, it is a way to write code that generates code to extend Rust syntax.
-2. `"Hello, World!"` is a `string`, we pass this string as an argument to `println!`, and it is printed to the screen.
+1. `println!` calls a **Macro**; it is a way to write code that generates code to extend Rust syntax.
+2. `"Hello, World!"` is a `string`; we pass this string as an argument to `println!`, and it is printed to the screen.
 3. We end the line with a semicolon `;`, which indicates that this expression is over and the next one is ready to begin.
 
-We can also compile the source code of `.rs` file without `cargo`, run:
+We can also compile a `.rs` file directly with `rustc`, without `cargo`. Run:
 
 ```shell
 rustc main.rs
 ```
 
-Then run `./main` to see the output(s).
+Then run `./main` to see the output.
 
-But we still recommend you to use `cargo`.
+But we still recommend using `cargo`.
 
 ## Chapter 2: Programming a Guessing Game
 
