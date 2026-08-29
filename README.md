@@ -410,7 +410,7 @@ This chapter covers concepts that appear in every programming language and how t
 
 ### Variables and Mutability
 
-As mentioned in previous chapter, **variables are immutable** by default. When a variable is immutable, once a value is bound to a name, you can't change that value. For example, if you write the following lines to a `.rs` file and compile it using `rustc`, you will see:
+As mentioned in the previous chapter, **variables are immutable** by default. When a variable is immutable, once a value is bound to a name, you can't change that value. For example, if you write the following lines into a `.rs` file and compile it using `rustc`, you will see:
 
 ```rust
 fn main() {
@@ -422,9 +422,9 @@ fn main() {
     println!("The value of x is {x}")
 }
 ```
-The line start with `let` means that the programme creates a new variable `x`. The line start with `x =` tries to assign the value `6` to the variable `x`.
+The line starting with `let` means that the program creates a new variable `x`. The line starting with `x =` tries to assign the value `6` to the variable `x`.
 
-If you compile the codes above, you will see:
+If you compile the code above, you will see:
 
 ```shell
 error[E0384]: cannot assign twice to immutable variable `x`
@@ -446,7 +446,7 @@ error: aborting due to 1 previous error
 For more information about this error, try `rustc --explain E0384`.
 ```
 
-Just like what is instructed in the compiler's error, we can make a variable mutable by adding `mut` in front of the variable name as we did in Chapter 2.
+Following the compiler's suggestion, we can make a variable mutable by adding `mut` in front of the variable name as we did in Chapter 2.
 
 ```rust
 fn main() {
@@ -461,7 +461,7 @@ fn main() {
 
 #### Declaring Constants
 
-Constants are **immutable**, and can be declared in any scope, including the global scope, which makes them useful for global parameters. For exampe:
+Constants are **immutable**, and can be declared in any scope, including the global scope, which makes them useful for global parameters. For example:
 
 ```rust
 const THRESHOLD: i32 = 1024;
@@ -471,7 +471,7 @@ Constants are valid for the entire time a program runs, within the scope in whic
 
 #### Shadowing
 
-Let's firstly see an example:
+Let's first look at an example:
 
 ```rust
 fn main() {
@@ -498,7 +498,7 @@ The value of x in the inner scope is: 12
 The value of x is 6
 ```
 
-Shadowing is different from marking a variable as `mut` because we creates a new variable with the same name. Also even with `mut` we can't mutate a variable's type. But shadowing can.
+Shadowing is different from marking a variable as `mut` because we create a new variable with the same name. Also, even with `mut` we can't mutate a variable's type, but shadowing can.
 
 ### Data Types
 
