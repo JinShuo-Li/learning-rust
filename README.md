@@ -149,7 +149,7 @@ This program is a simple guessing game. Let's review it in detail:
 use std::io;
 ```
 
-Here, the program use the `std::io` library, which is a standard library that provides you with a number of useful features, including the ability to accept user input.
+Here, the program uses the `std::io` library, which is a standard library that provides you with a number of useful features, including the ability to accept user input.
 
 ```rust
 let mut guess = String::new();
@@ -171,13 +171,13 @@ The `&` symbol indicates that we are passing a reference to the `guess` variable
 
 **References are a complex feature, and one of Rust's major advantages is how safe and easy it is to use references.**
 
-and:
+Then:
 
 ```rust
 .expect("Failed to read line");
 ```
 
-Here the program handles potential failure with the result type. The `read_line()` method returns a `Result` type, which can be either `Ok` or `Err`. If the result is `Err`, the program will panic and print the message "Failed to read line". If the result is `Ok`, the program will continue executing.
+Here the program handles potential failure with the `Result` type. The `read_line()` method returns a `Result` value, which can be either `Ok` or `Err`. If the result is `Err`, the program will panic and print the message "Failed to read line". If the result is `Ok`, the program will continue executing.
 
 If we don't use `expect()`, and compile the program, we will get a warning:
 
@@ -201,7 +201,7 @@ warning: `ch02_gaming` (bin "ch02_gaming") generated 1 warning
     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.20s
 ```
 
-In Rust, fun fact: Compilable warnings are not errors, and they do not prevent the program from running. As Rust designed to be strict and safe, it will warn you about potential problems in your code, even if they do not prevent the program from running. This is a good thing, as it helps you catch potential bugs early in the development process.
+In Rust, warnings are not errors, and they do not prevent the program from running. Rust is designed to be strict and safe, so it warns you about potential problems in your code even when they would not stop compilation. This is a good thing, as it helps you catch potential bugs early in the development process.
 
 ```rust
 println!("You guessed: {guess}");
@@ -211,7 +211,7 @@ Here the program prints the value of the `guess` variable to the screen. The `{g
 
 ### Generating a Random Number
 
-Now we can implement a new version of the guessing game, which generates a random number and compares it with the user's guess. The source code is as follows:
+Now we can implement a new version of the guessing game, which generates a random number as the secret. The source code is as follows:
 
 ```rust
 use std::io;
@@ -250,7 +250,7 @@ If we want to update the `rand` crate to the latest version, we can run the foll
 cargo update
 ```
 
-Now we can compile and run the program, and it will generate a random number between 1 and 100, and compare it with the user's guess.
+Now we can compile and run the program, and it will generate a random number between 1 and 100 as the secret.
 
 ```rust
 use rand::Rng;
@@ -380,7 +380,7 @@ loop {
 }
 ```
 
-Until they guess the correct number. The `loop` will continue until `quit` is called, or `Ctrl+C` is pressed.
+The `loop` runs the code inside it over and over until the user guesses the correct number. It never stops on its own: it runs forever until it is stopped with a `break` statement or `Ctrl+C`.
 
 We also modify the code so that the game will quit when the user wins by adding a `break` statement inside the `Ordering::Equal` arm of the `match` expression:
 
