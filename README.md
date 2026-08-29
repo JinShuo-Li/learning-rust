@@ -499,3 +499,12 @@ The value of x is 6
 ```
 
 Shadowing is different from marking a variable as `mut` because we creates a new variable with the same name. Also even with `mut` we can't mutate a variable's type. But shadowing can.
+
+### Data Types
+
+Every value in Rust is of a certain data type, which tells Rust what kind of data is being specified so that it knows how to work with that data. We'll look at two data type subsets: scalar and compound.
+
+**Keep in mind that Rust is a statically typed language**, which means that it must know the types of all variables at compile time. The compiler can usually infer what type we want to use based on the value and how we use it. In cases when many types are possible, such as when we converted a `String` to a numeric type using parse in Chapter 2, we must add a type annotation like `u32` or `i32`.
+
+#### Scalar Types
+
