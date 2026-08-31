@@ -508,3 +508,72 @@ Every value in Rust is of a certain data type, which tells Rust what kind of dat
 
 #### Scalar Types
 
+Scalar types represent a single value. Rust has four primary scalar types: integers, floating-point numbers, Booleans, and characters.
+
+**Integer Types**
+
+An integer is a number without a fractional component. In Rust, we have several integer types:
+
+| Length | Signed | Unsigned |
+|--------|--------|----------|
+|  8-bit | i8     | u8       |
+| 16-bit | i16    | u16      |
+| 32-bit | i32    | u32      |
+| 64-bit | i64    | u64      |
+|128-bit | i128   | u128     |
+|Architecture-dependent | isize | usize |
+
+Each signed n-bit integer can store numbers from $-2^{n-1}$ to $2^{n-1} - 1$, and each unsigned n-bit integer can store numbers from $0$ to $2^n - 1$.
+
+Additionally, the `isize` and `usize` types depend on the architecture of the computer your program is running on. On a 64-bit architecture, these types will be 64 bits in size, and on a 32-bit architecture, they will be 32 bits in size.
+
+**Floating-Point Types**
+
+Rust also has two primitive types for floating-point numbers: `f32` and `f64`. The default type is `f64`, which is generally the best choice in terms of speed and precision.
+
+**Floating-point numbers are represented according to IEEE-754 Standard.**
+
+- Numeric Operations
+
+```rust
+fn main() {
+    // addition
+    let sum = 5 + 10;
+
+    // subtraction
+    let difference = 95.5 - 4.3;
+
+    // multiplication
+    let product = 4 * 30;
+
+    // division
+    let quotient = 56.7 / 32.2;
+    let truncated = -5 / 3; // Results in -1
+
+    // remainder
+    let remainder = 43 % 5;
+}
+```
+
+**Boolean Type**
+
+As in most other programming languages, the Boolean type in Rust has two possible values: `true` and `false`. The Boolean type is specified using the `bool` keyword.
+
+```rust
+fn main() {
+    let t = true;
+    let f: bool = false;
+}
+```
+
+
+**The Character Type**
+
+Rust's `char` type is the language's most primitive alphabetic type. It represents a single character and is specified using the `char` keyword. Rust's `char` type is four bytes in size and represents a Unicode Scalar Value, which means it can represent a wide range of characters from different languages and symbol sets.
+
+```rust
+fn main() {
+    let c = 'z';
+    let z: char = 'ℤ';
+}
+```
